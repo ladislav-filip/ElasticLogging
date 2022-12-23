@@ -27,6 +27,14 @@ services:
       - ELASTICSEARCH_URL=http://localhost:9200
     networks:
       - elastic
+        
+  cerebro:
+    container_name: cerebro
+    image: lmenezes/cerebro
+    ports:
+      - 5701:9000
+    networks:
+      - elastic    
 
 networks:
   elastic:
