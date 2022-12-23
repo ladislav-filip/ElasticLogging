@@ -4,8 +4,6 @@ services:
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
-    ports:
-      - 9200:9200
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     environment:
@@ -19,22 +17,31 @@ services:
   kibana:
     container_name: kibana
     image: docker.elastic.co/kibana/kibana:7.9.1
-    ports:
-      - 5601:5601
     depends_on:
       - elasticsearch
     environment:
-      - ELASTICSEARCH_URL=http://localhost:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SERVER_BASEPATH=/kibana
     networks:
       - elastic
         
   cerebro:
     container_name: cerebro
     image: lmenezes/cerebro
-    ports:
-      - 5701:9000
     networks:
       - elastic    
+        
+  # https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Docker-Nginx-reverse-proxy-setup-example
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: nginx:latest
+    ports:
+      - 8088:80
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d/
+      - ./nginx-html/:/usr/share/nginx/html/
+    networks:
+      - elastic
 
 networks:
   elastic:

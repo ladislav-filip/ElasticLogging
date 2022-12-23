@@ -37,4 +37,11 @@ public class WeatherForecastController : ControllerBase
         _logger.LogWarning("Call endpoint warnning");
         return "Warning";
     }
+    
+    [HttpGet("error")]
+    public string GeError()
+    {
+        _logger.LogError("Call endpoint warnning");
+        return "Warning";
+    }
 }
