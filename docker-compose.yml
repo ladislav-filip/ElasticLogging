@@ -30,7 +30,17 @@ services:
     image: lmenezes/cerebro
     networks:
       - elastic    
-        
+      
+  elastic-logging:
+    container_name: "elastic-logging"
+    image: elastic-logging
+    environment:
+      - BASE_PATH=elog
+      - REWRITE_PORT=8088
+      - Serilog__WriteTo__0__Args__nodeUris=http://elasticsearch:9200
+    networks:
+      - elastic
+  
   # https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Docker-Nginx-reverse-proxy-setup-example
   nginx-proxy:
     container_name: nginx-proxy
