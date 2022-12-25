@@ -46,10 +46,12 @@ services:
     container_name: nginx-proxy
     image: nginx:latest
     ports:
-      - 8088:80
+      #- 8088:80
+      - 40443:443
     volumes:
       - ./conf.d/:/etc/nginx/conf.d/
       - ./nginx-html/:/usr/share/nginx/html/
+      - ./ssl/:/ssl/
     networks:
       - elastic
 
