@@ -36,7 +36,7 @@ services:
     image: elastic-logging
     environment:
       - BASE_PATH=elog
-      - REWRITE_PORT=8088
+      - REWRITE_PORT=40443
       - Serilog__WriteTo__0__Args__nodeUris=http://elasticsearch:9200
     networks:
       - elastic

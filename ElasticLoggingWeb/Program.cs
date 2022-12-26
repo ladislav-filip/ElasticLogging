@@ -7,7 +7,7 @@ Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 
-Log.Information("Start application v4...");
+Log.Information("Start application v5...");
 
 builder.Host
     .UseSerilog();
@@ -38,13 +38,15 @@ app.UseSwagger(c =>
         }
 
         var hostPath = request.Headers["X-Forwarded-Host"];
+        var hostScheme = request.Headers["X-Forwarded-Scheme"];
         var basePath = builder.Configuration.GetValue<string>("BASE_PATH");
         var port =  builder.Configuration.GetValue<string>("REWRITE_PORT");
+        
         if (!string.IsNullOrEmpty(port))
         {
             hostPath += $":{port}";
         }
-        var serverUrl = $"{request.Scheme}://{hostPath}/{basePath}";
+        var serverUrl = $"{hostScheme}://{hostPath}/{basePath}";
         Log.Information(serverUrl);
         swaggerDoc.Servers = new List<OpenApiServer>
         {
