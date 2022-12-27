@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+using ElasticLoggingWeb.Infrastructure;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,46 +17,19 @@ builder.Host
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCustomSwaggerGen();
+builder.Services.AddCustomAuthentication(builder.Configuration);
 
 var app = builder
     .Build();
 
-app.UseSwagger(c =>
-{
-    c.PreSerializeFilters.Add((swaggerDoc, request) =>
-    {
-        Log.Debug("Headers -------------->>>>>>>>");
-        foreach (var (key, value) in request.Headers)
-        {
-            Log.Debug("    {Key}: {Value}", key, value);
-        }
-        
-        if (!request.Headers.ContainsKey("X-Forwarded-Host"))
-        {
-            return;
-        }
+app.UseCustomSwagger(builder.Configuration);
 
-        var hostPath = request.Headers["X-Forwarded-Host"];
-        var hostScheme = request.Headers["X-Forwarded-Scheme"];
-        var basePath = builder.Configuration.GetValue<string>("BASE_PATH");
-        var port =  builder.Configuration.GetValue<string>("REWRITE_PORT");
-        
-        if (!string.IsNullOrEmpty(port))
-        {
-            hostPath += $":{port}";
-        }
-        var serverUrl = $"{hostScheme}://{hostPath}/{basePath}";
-        Log.Information(serverUrl);
-        swaggerDoc.Servers = new List<OpenApiServer>
-        {
-            new() { Url = serverUrl }
-        };
-    });
-});
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

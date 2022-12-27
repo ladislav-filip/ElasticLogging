@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElasticLoggingWeb.Controllers;
@@ -41,7 +42,17 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("error")]
     public string GeError()
     {
-        _logger.LogError("Call endpoint warnning");
-        return "Warning";
+        _logger.LogError("Call endpoint error");
+        return "Error";
+    }
+
+    [Authorize]
+    [HttpGet("secrets")]
+    public IEnumerable<string> GetSecrets()
+    {
+        return new[]
+        {
+            "Pribor", "Ostrava", "Brno", "Praha"
+        };
     }
 }
