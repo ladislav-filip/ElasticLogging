@@ -59,6 +59,6 @@ public class AuthController : ControllerBase
         tokenHandler.WriteToken(token);
         var stringToken = tokenHandler.WriteToken(token);
         _logger.LogInformation("Sign in user: {Username}", model.Username);
-        return Ok(stringToken);
+        return Ok(new SignInSuccess(stringToken));
     }
 }

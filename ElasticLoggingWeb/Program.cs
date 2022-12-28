@@ -7,7 +7,7 @@ Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 
-Log.Information("Start application v5...");
+Log.Information("Start application v6...");
 
 builder.Host
     .UseSerilog();

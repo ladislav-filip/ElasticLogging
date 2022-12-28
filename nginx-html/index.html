@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<header>
+
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <strong>Family</strong>
+            </a>
+            <a id="btSignIn" role="button" class="btn btn-outline-primary" href="sign-in.html">SignIn</a>
+
+            <a id="btSignOut" role="button" class="btn btn-success" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg><span class="ms-2">SignOut</span></a>
+
+        </div>
+    </div>
+</header>
+
+
 <main role="main">
 
     <section class="jumbotron text-center">
@@ -27,7 +47,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
 
-                        <div class="card-body">
+                        <div class="card-body" >
                             <h4>
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                 <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
@@ -36,8 +56,8 @@
                             <p class="card-text">Modul pro administraci uživatelů a jejich rolí.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -55,8 +75,8 @@
                             <p class="card-text">Modul pro monitoring a sledování aplikací.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a role="button" class="btn btn-sm btn-primary" href="/kibana/" target="_blank" >Spustit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <a role="button" modul="yes" class="btn btn-sm btn-primary" href="/kibana/" target="_blank" >Spustit</a>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -75,8 +95,8 @@
                             <p class="card-text">Konfigurace databáze Elasticsearch.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a role="button" class="btn btn-sm btn-primary" href="/cerebro/" target="_blank" >Spustit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <a role="button" modul="yes" class="btn btn-sm btn-primary" href="/cerebro/" target="_blank" >Spustit</a>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -96,8 +116,9 @@
                             <p class="card-text">Swagger definice zkušební aplikace pro logování do elasticsearch.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a role="button" class="btn btn-sm btn-primary" href="/elog/swagger/" target="_blank" >Spustit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <a role="button" modul="yes" class="btn btn-sm btn-primary" href="/elog/swagger/" target="_blank" >Spustit</a>
+                                    <a role="button" modul="yes" class="btn btn-sm btn-success" href="/elog/health/" target="_blank">Health</a>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -117,8 +138,8 @@
                             <p class="card-text">Evidence dopravních zakázek a evidence pohybu vozidel v objektu.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -137,8 +158,8 @@
                             <p class="card-text">Sklad pro expedici výrobků.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -157,8 +178,8 @@
                             <p class="card-text">Nevyužitý slot pro další modul.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -177,8 +198,8 @@
                             <p class="card-text">Nevyužitý slot pro další modul.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -197,8 +218,8 @@
                             <p class="card-text">Nevyužitý slot pro další modul.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -217,8 +238,8 @@
                             <p class="card-text">Nevyužitý slot pro další modul.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Spustit</button>
+                                    <button modul="yes" type="button" class="btn btn-sm btn-outline-secondary">Skrýt</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>
@@ -245,5 +266,46 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script type="application/javascript">
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    }
+
+    function reloadState() {
+        if (localStorage.getItem("access_token")) {
+            const usr = parseJwt(localStorage.getItem("access_token"));
+            console.log(usr);
+            $("#btSignOut").show();
+            $("#btSignIn").hide();
+            $("button[modul='yes']").prop('disabled', false);
+            $("a[modul='yes']").removeClass('disabled');
+        }
+        else {
+            $("#btSignOut").hide();
+            $("#btSignIn").show();
+            $("button[modul='yes']").prop('disabled', true);
+            $("a[modul='yes']").addClass('disabled');
+        }
+
+
+    }
+
+    $("#btSignOut").click(function() {
+        localStorage.removeItem("access_token");
+        reloadState();
+    });
+
+
+    reloadState();
+
+</script>
+
 </body>
 </html>
