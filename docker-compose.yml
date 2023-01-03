@@ -53,6 +53,7 @@ services:
       - ./conf.d/:/etc/nginx/conf.d/
       - ./nginx-html/:/usr/share/nginx/html/
       - ./ssl/:/ssl/
+      - ./psw/:/psw/
     networks:
       - elastic
 
