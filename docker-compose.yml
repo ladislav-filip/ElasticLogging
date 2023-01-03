@@ -41,6 +41,17 @@ services:
       - Serilog__WriteTo__0__Args__nodeUris=http://elasticsearch:9200
     networks:
       - elastic
+        
+  demo-transportation:
+    container_name: demo-transportation
+    image: transportation:latest
+    ports:
+      - 9099:80
+    environment:
+      - JwtOptions__Secret=elastic-local-secret-key-example'
+      - JwtOptions__Issuer=https://elastic.local/
+    networks:
+      - elastic
   
   # https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Docker-Nginx-reverse-proxy-setup-example
   nginx-proxy:
