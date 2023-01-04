@@ -52,6 +52,21 @@ services:
       - JwtOptions__Issuer=https://elastic.local/
     networks:
       - elastic
+        
+  dokuwiki:
+    container_name: dokuwiki
+    image: lscr.io/linuxserver/dokuwiki:latest
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Prague
+    volumes:
+      - ./dokuwiki/config:/config
+    ports:
+      - 8089:80
+    networks:
+      - elastic        
   
   # https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Docker-Nginx-reverse-proxy-setup-example
   nginx-proxy:
